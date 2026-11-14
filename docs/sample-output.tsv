@@ -1,0 +1,9 @@
+# 4 archives, 8 findings
+critical	CVE-2022-42889	shop.war!/WEB-INF/lib/commons-text-1.9.jar	commons-text 1.9 (file name): Text4Shell: code execution through string interpolation, upgrade to 1.10.0 or later
+critical	CVE-2021-44228	shop.war!/WEB-INF/lib/log4j-core-2.14.1.jar	log4j-core 2.14.1 (file name): Log4Shell: remote code execution through JNDI lookups, upgrade to 2.17.1 or later
+critical	CVE-2023-50164	tool-shaded.jar!/META-INF/maven/org.apache.struts/struts2-core/pom.properties	struts2-core 2.5.30 (pom.properties): file upload path traversal leading to remote code execution, upgrade to 2.5.33 or 6.3.0.2
+high	CVE-2019-17571	legacy.jar!/lib/log4j-1.2.17.jar	log4j 1.2.17 (file name): Log4j 1.x is end of life and has a deserialization flaw in SocketServer, migrate to Log4j 2.17.1 or later
+high	CVE-2021-44228	legacy.jar!/org/apache/logging/log4j/core/lookup/JndiLookup.class	JndiLookup class present but no log4j-core version found: probably a shaded Log4j 2, verify it is 2.17.1 or later
+high	CVE-2022-1471	reports-fat.jar!/BOOT-INF/lib/snakeyaml-1.33.jar	snakeyaml 1.33 (file name): unsafe deserialization when loading untrusted YAML, upgrade to 2.0 or later
+high	CVE-2022-22965	shop.war!/WEB-INF/lib/spring-beans-5.3.17.jar	spring-beans 5.3.17 (file name): Spring4Shell: remote code execution on JDK 9 or later when deployed as a WAR on Tomcat, upgrade to 5.3.18 or later
+high	CVE-2015-7501	tool-shaded.jar!/META-INF/maven/commons-collections/commons-collections/pom.properties	commons-collections 3.2.1 (pom.properties): deserialization gadget chains, upgrade to 3.2.2 or 4.1
