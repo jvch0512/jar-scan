@@ -2,6 +2,8 @@
 
 jar-scan opens JAR, WAR and EAR files and looks for libraries with famous remote code execution and deserialization bugs: Log4Shell, Text4Shell, Spring4Shell, Struts, SnakeYAML, commons-collections gadgets and more. It reads library file names, the `pom.properties` files that Maven leaves inside shaded jars, and well-known class files, and it goes into nested jars (Spring Boot fat jars), so a library that was copied into another jar is still found.
 
+![Terminal demo of jar-scan on its sample data](docs/demo.svg)
+
 **Live demo:** https://jvch0512.github.io/jar-scan/ (Synthetic archives that contain only entry names, no real library code.)
 
 Java 17+, JDK only (no dependencies). The demo page is rendered from the tool's `--tsv` output by `scripts/site.py` (Python 3, only needed to regenerate the page).
@@ -53,3 +55,13 @@ make test    # 65 checks
 ```
 
 MIT.
+
+## Code scanning (SARIF)
+
+`scripts/tsv2sarif.py` converts the `--tsv` output into SARIF 2.1.0, so findings show up in GitHub code scanning:
+
+```sh
+java -cp out jarscan.Main examples --tsv | python3 scripts/tsv2sarif.py --tool jar-scan --prefix examples > results.sarif
+```
+
+Upload `results.sarif` with `github/codeql-action/upload-sarif`. Severities map to SARIF levels (critical and high to error, medium to warning, low and info to note) and to a `security-severity` score.
